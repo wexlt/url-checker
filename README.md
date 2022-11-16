@@ -58,7 +58,7 @@ php bin/phpunit
 
 - Go to [http://localhost:8080](http://localhost:8080) press `Signup` and register a user
 - Login
-- Go to [http://localhost:8080/link](http://localhost:8080/link) create a links you wanna to check. IMPORTANT: keywords should be separated by comma
+- Go to [http://localhost:8080/link](http://localhost:8080/link) create a links you wanna to check. `IMPORTANT`: keywords should be separated by comma
 - To run link checker you can do it manually by running command
 ```bash
 php bin/console app:check-links
