@@ -1,8 +1,6 @@
 # url-checker
 Symfony url check task
 
-# Url checker task
-
 ## Installation
 
 Clone repo.
