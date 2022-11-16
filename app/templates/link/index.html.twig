@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Link index{% endblock %}
+
+{% block body %}
+    <h1>Link index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Url</th>
+                <th>Last_check</th>
+                <th>Keywords</th>
+                <th>actions</th>
+                <th>last log</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for link in links %}
+            <tr>
+                <td>{{ link.id }}</td>
+                <td>{{ link.url }}</td>
+                <td>{{ link.lastCheck ? link.lastCheck|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ link.keywords }}</td>
+                <td>
+                    <a href="{{ path('app_link_show', {'id': link.id}) }}">show</a>
+                    <a href="{{ path('app_link_edit', {'id': link.id}) }}">edit</a>
+                </td>
+                <td>
+                    {% if link.getLinkLogs.last %}
+                        <td>Date:{{ link.getLinkLogs.last.datetimeCreated.format('Y-m-d H:i:s') }} | Log:{{ link.getLinkLogs.last.log }}</td>
+                    {% else %}
+                        <td>-</td>
+                    {% endif %}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_link_new') }}">Create new</a>
+{% endblock %}
