@@ -71,4 +71,4 @@ cron
 ## Additional info
 - Users can see links that was created by other users. 
 - Info about request is saved as string.
-- Website shows last request info.
+- Website shows last request log. All logs history saved on database.
