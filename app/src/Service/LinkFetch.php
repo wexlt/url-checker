@@ -14,9 +14,8 @@ class LinkFetch
         private LinkLogRepository $linkLogRepository,
         private WebCrawler $crawler,
         private KeywordsFinder $keywordsFinder,
-        private bool $withKeywordsCheck = false)
-    {
-
+        private bool $withKeywordsCheck = false
+    ) {
     }
 
     public function fetchAll(): self
@@ -60,7 +59,8 @@ class LinkFetch
         }
     }
 
-    private function findKeywords(string|null $keywords): string|null {
+    private function findKeywords(string|null $keywords): string|null
+    {
         if (!$keywords) {
             return null;
         }
