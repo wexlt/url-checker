@@ -24,6 +24,18 @@ class LinkLog
     #[ORM\JoinColumn(nullable: false)]
     private ?Link $link = null;
 
+    #[ORM\Column(type: Types::SMALLINT, nullable: true)]
+    private ?int $response_code = null;
+
+    #[ORM\Column(type: Types::SMALLINT)]
+    private ?int $redirects_count = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $keywords_found = null;
+
+    #[ORM\Column(type: Types::SMALLINT)]
+    private ?int $has_error = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -61,6 +73,54 @@ class LinkLog
     public function setLink(?Link $link): self
     {
         $this->link = $link;
+
+        return $this;
+    }
+
+    public function getResponseCode(): ?int
+    {
+        return $this->response_code;
+    }
+
+    public function setResponseCode(?int $response_code): self
+    {
+        $this->response_code = $response_code;
+
+        return $this;
+    }
+
+    public function getRedirectsCount(): ?int
+    {
+        return $this->redirects_count;
+    }
+
+    public function setRedirectsCount(int $redirects_count): self
+    {
+        $this->redirects_count = $redirects_count;
+
+        return $this;
+    }
+
+    public function getKeywordsFound(): ?string
+    {
+        return $this->keywords_found;
+    }
+
+    public function setKeywordsFound(?string $keywords_found): self
+    {
+        $this->keywords_found = $keywords_found;
+
+        return $this;
+    }
+
+    public function getHasError(): ?int
+    {
+        return $this->has_error;
+    }
+
+    public function setHasError(int $has_error): self
+    {
+        $this->has_error = $has_error;
 
         return $this;
     }

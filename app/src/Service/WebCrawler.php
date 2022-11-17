@@ -11,15 +11,23 @@ class WebCrawler
 {
     private string $url;
     private HttpClientInterface $client;
-    private string $error = '';
-    private int $redirectCount = 0;
-    private ?int $responseCode = null;
-    private string $content = '';
+    private string $error;
+    private int $redirectCount;
+    private ?int $responseCode;
+    private string $content;
     private ?ResponseInterface $response;
 
     public function __construct()
     {
         $this->client = HttpClient::create();
+    }
+
+    private function reset(): void
+    {
+        $this->redirectCount = 0;
+        $this->responseCode = null;
+        $this->content = '';
+        $this->error = '';
     }
 
     public function setUrl(string $url): self
@@ -31,6 +39,8 @@ class WebCrawler
 
     public function crawl(): self
     {
+        $this->reset();
+
         try {
             $this->response = $this->client->request(
                 'GET',
